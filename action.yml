@@ -6,10 +6,10 @@ inputs:
 outputs:
   SHORT_SHA:
     description: 'The short SHA of the commit'
-    value: ${{ steps.get_variables.outputs.short_sha }}
+    value: ${{ steps.get_app_version.outputs.short_sha }}
   APP_VERSION:
     description: 'The application version'
-    value: ${{ steps.get_variables.outputs.app_version }}
+    value: ${{ steps.get_app_version.outputs.app_version }}
 
 runs:
   using: 'composite'
