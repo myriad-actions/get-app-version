@@ -1,0 +1,25 @@
+name: 'get app version'
+description: 'allow to get app version'
+
+inputs:
+
+outputs:
+  SHORT_SHA:
+    description: 'The short SHA of the commit'
+    value: ${{ steps.get_variables.outputs.short_sha }}
+  APP_VERSION:
+    description: 'The application version'
+    value: ${{ steps.get_variables.outputs.app_version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Get some Variable
+      id: get_variables
+      shell: bash
+      run: |
+        echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+        echo "app_version=$(make get-version)" >> $GITHUB_OUTPUT
