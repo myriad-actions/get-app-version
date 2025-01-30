@@ -1,5 +1,5 @@
-name: 'get app version'
-description: 'allow to get app version'
+name: 'Get App Version'
+description: 'Retrieve the application version using `make get-version`.'
 
 inputs:
 
@@ -17,8 +17,8 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Get some Variable
-      id: get_variables
+    - name: Get App Version
+      id: get_app_version
       shell: bash
       run: |
         echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
